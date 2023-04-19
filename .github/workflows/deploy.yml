@@ -12,10 +12,13 @@ jobs:
         with:
           node-version: "18"
       - name: Configure AWS credentials from Test account
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: arn:aws:iam::713204374813:role/terraform-github-openid
           aws-region: eu-west-1
+      - name: COpy files to the test website with aws cli
+        run: |
+          aws s3 sync . s3://my-genesso-sagar-s3-bucket
       - name: Install dependencies
         run: npm install -g aws-cdk
       - name: Install required packages
