@@ -2,7 +2,7 @@ name: "Terraform action"
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
 permissions:
   id-token: write # This is required for aws oidc connecttion
@@ -42,7 +42,7 @@ jobs:
         run: terraform fmt -check
         continue-on-error: true
 
-      - name: Terraform Init
+      - name: Terraform Initsssss
         id: init
         env:
           AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
